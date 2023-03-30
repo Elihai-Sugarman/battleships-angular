@@ -27,5 +27,4 @@ export class AttackComponent {
     }
     return idx
   }
-  
 }
