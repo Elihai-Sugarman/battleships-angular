@@ -15,6 +15,9 @@ export class CellComponent {
   isIsland: boolean = false
   @Input() i: number = 0
   @Input() j: number = 0
+  @Input() length: number = 0
+  @Input() place: number = 0
+  @Input() direction: 'horizontal' | 'vertical' | '' = ''
   @Output() onCellClick: EventEmitter<boolean> = new EventEmitter()
   isClicked: boolean = false
   isGameOn: boolean = false

@@ -64,7 +64,7 @@ export class BoardComponent {
     this.board = []
     if (this.boardType === 'square') {
       for (let i = 0; i < this.boardLength; i++) {
-        this.board.push(Array(this.boardWidth).fill({ isBattleship: false, leftBorder: false, rightBorder: false, topBorder: false, bottomBorder: false, isActive: true, isIsland: false }))
+        this.board.push(Array(this.boardWidth).fill({ isBattleship: false, leftBorder: false, rightBorder: false, topBorder: false, bottomBorder: false, isActive: true, isIsland: false, battleshipLength: 0 }))
       }
     } else if (this.boardType === 'rhombus') {
       if (this.boardWidth < 3) this.boardWidth = 3
@@ -74,7 +74,7 @@ export class BoardComponent {
         for (let j = 0; j < this.boardWidth; j++) {
           let isActive: boolean = Math.floor(this.boardLength / 2) === i || Math.floor(this.boardWidth / 2) === j ||
             (this.boardLength % 2 === 0 && this.boardLength / 2 - 1 === i) || (this.boardWidth % 2 === 0 && this.boardWidth / 2 - 1 === j)
-          boardLine.push({ isBattleship: false, leftBorder: false, rightBorder: false, topBorder: false, bottomBorder: false, isActive, isIsland: false })
+          boardLine.push({ isBattleship: false, leftBorder: false, rightBorder: false, topBorder: false, bottomBorder: false, isActive, isIsland: false, battleshipLength: 0, place: 0, direction: '' })
         }
         this.board.push(boardLine)
       }
@@ -158,14 +158,14 @@ export class BoardComponent {
           if (m === length - 1) rightBorder = true
           topBorder = true
           bottomBorder = true
-          this.board[i][j + m] = { isBattleship: true, leftBorder, rightBorder, topBorder, bottomBorder, isActive: true, isIsland: false }
+          this.board[i][j + m] = { isBattleship: true, leftBorder, rightBorder, topBorder, bottomBorder, isActive: true, isIsland: false, battleshipLength: length, place: m + 1, direction }
           battleship.push([i, j + m])
         } else if (direction === 'vertical') {
           if (m === 0) topBorder = true
           if (m === length - 1) bottomBorder = true
           leftBorder = true
           rightBorder = true
-          this.board[i + m][j] = { isBattleship: true, leftBorder, rightBorder, topBorder, bottomBorder, isActive: true, isIsland: false }
+          this.board[i + m][j] = { isBattleship: true, leftBorder, rightBorder, topBorder, bottomBorder, isActive: true, isIsland: false, battleshipLength: length, place: m + 1, direction }
           battleship.push([i + m, j])
         }
         this.battleshipCellsCount++
