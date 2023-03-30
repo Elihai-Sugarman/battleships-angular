@@ -1,0 +1,54 @@
+<div class="background">
+    <div class="board-settings">
+        <form (submit)="onSubmitForm()">
+            <section>
+                <h3 #focus tabindex="0">Board Settings</h3>
+                <label for="square">
+                    <input type="radio" id="square" name="boardType" value="square" [checked]="boardType === 'square'"
+                        (change)="onChangeType('square')">
+                    <span>Square</span>
+                </label>
+                <label for="rhombus">
+                    <input type="radio" id="rhombus" name="boardType" value="rhombus"
+                        [checked]="boardType === 'rhombus'" (change)="onChangeType('rhombus')">
+                    <span>Rhombus</span>
+
+                </label>
+            </section>
+            <section>
+                <div>
+                    <label for="boardLength" class="flex">
+                        <span>Board Length:</span>
+                        <input id="boardLength" type="number" [(ngModel)]="boardLength" name="boardLength"
+                            class="input-border" (change)="onSubmit()" [min]="boardType==='rhombus'? 3 : 2">
+                    </label>
+                </div>
+                <div>
+                    <label for="boardWidth" class="flex">
+                        <span>Board Width:</span>
+                        <input id="boardWidth" type="number" [(ngModel)]="boardWidth" name="boardWidth"
+                            class="input-border" (change)="onSubmit()" [min]="boardType==='rhombus'? 3 : 2">
+                    </label>
+                </div>
+                <div>
+                    <label for="battleshipNum" class="flex">
+                        <span>Battlships Number:</span>
+                        <input id="battleshipNum" type="number" [(ngModel)]="battleshipNum" name="battleshipNum" min="1"
+                            class="input-border" (change)="onSubmit()"
+                            [max]="boardType==='rhombus'? boardLength*boardWidth/2 : boardLength*boardWidth/4">
+                    </label>
+                </div>
+            </section>
+            <section>
+                <label for="create-islands">
+                    <span>Create Islands?</span>
+                    <input type="checkbox" id="create-islands" (change)="onCheckIslands()" [checked]="createIslands">
+                </label>
+            </section>
+            <section tabindex="0" class="error-msg" *ngIf="createIslands && boardLength * boardWidth < 10">
+                <p>Can't set islands on a board with this size...</p>
+            </section>
+            <button (keydown.tab)="handleLastTab($event)">Start Game</button>
+        </form>
+    </div>
+</div>

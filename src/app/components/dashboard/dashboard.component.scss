@@ -1,0 +1,67 @@
+@import '../../../assets/basic.scss';
+
+.battleships-dashboard {
+    text-align: center;
+    margin: 20px auto;
+    background-color: #dbe0e2;
+    padding: 20px 20px;
+    width: 300px;
+    background: linear-gradient(45deg, $regular-cell, transparent);
+    backdrop-filter: blur(4px);
+    border-radius: 10px;
+    box-shadow: 0 0 10px #00000054;
+    border: 1px solid #214240;
+
+    @media (max-width: 500px) {
+        width: 280px;
+    }
+}
+
+.exposed-battleship {
+    text-decoration: line-through;
+}
+
+ul {
+    text-decoration: none;
+    width: 130px;
+    margin: 5px auto;
+}
+
+li div {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    gap: 5px;
+    justify-content: center;
+
+    span {
+    padding: 6px 3px;
+    }
+}
+
+table {
+    display: inline-block;
+}
+
+td {
+    // background-color: cadetblue;
+    background-color: $battleship;
+    height: 25px;
+    min-width: 25px;
+}
+
+.border-left {
+    border-left: white solid 2px;
+}
+
+.border-right {
+    border-right: white solid 2px;
+}
+
+.border-top {
+    border-top: white solid 2px;
+}
+
+.border-bottom {
+    border-bottom: white solid 2px;
+}

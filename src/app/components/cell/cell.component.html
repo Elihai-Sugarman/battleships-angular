@@ -1,0 +1,5 @@
+<button *ngIf="isActive" [ngClass]="{'empty-clicked': !isBattleship && !isIsland && (isClicked || !isGameOn),
+    'island': isIsland && (isClicked || !isGameOn), 'regular-cell': !isGameWon && !isClicked && isGameOn,
+    'battleship-clicked': isBattleship && (isClicked || !isGameOn), 'game-won': isGameWon}" (click)="onClick()"
+    [attr.aria-label]="cellLabel()">
+</button>

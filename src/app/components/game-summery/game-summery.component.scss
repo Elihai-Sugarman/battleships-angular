@@ -1,0 +1,36 @@
+@import '../../../assets/basic.scss';
+
+* {
+    text-align: center;
+}
+
+div {
+    margin-top: 105px;
+    margin-bottom: 20px;
+    padding: 20px;
+    background: linear-gradient(45deg, $regular-cell, transparent);
+    backdrop-filter: blur(4px);
+    border-radius: 10px;
+    box-shadow: 0 0 10px #00000054;
+    border: 1px solid #214240;
+    color: white;
+    line-height: 1.5;
+    width: 250px;
+    margin-inline-start: 50px;
+
+    @media (max-width: 1160px) {
+        margin: 10px auto;
+    }
+}
+
+h2 {
+    margin: 10px 0px;
+}
+
+button {
+    cursor: pointer;
+}
+
+li {
+    margin: 10px 0px;
+}

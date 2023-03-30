@@ -1,0 +1,47 @@
+.background {
+    z-index: -1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(../assets/battleship.jpg);
+    opacity: 0.6;
+}
+
+.content {
+    padding: 20px 30px;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+
+    @media (min-width: 1161px) {
+        width: max-content;
+    }
+
+    @media (max-width: 430px) {
+        padding: 20px;
+    }
+}
+
+.add-margin {
+    margin-top: 37px;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+
+    @media (max-width: 1160px) {
+        flex-direction: column;
+    }
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: 1161px) {
+        margin-top: 85px;
+    }
+}

@@ -1,0 +1,95 @@
+.table {
+    position: relative;
+    font-weight: bold;
+    margin-inline: auto;
+    padding: 0px;
+    overflow-x: scroll;
+    padding-bottom: 10px;
+
+    margin-inline-end: 40px;
+
+    @media (max-width: 600px) {
+        margin-inline-end: 30px;
+    }
+
+    @media (max-width: 500px) {
+        margin-inline-end: 25px;
+    }
+
+    @media (min-width: 1160px) {
+        max-width: 40vw;
+    }
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+table {
+    margin-inline: auto;
+    max-width: max-content;
+
+}
+
+td {
+    position: relative;
+    padding: 0px;
+    height: 40px;
+    min-width: 40px;
+    text-align: center;
+
+    @media (max-width: 600px) {
+        height: 30px;
+        min-width: 30px;
+    }
+
+    @media (max-width: 500px) {
+        height: 25px;
+        min-width: 25px;
+    }
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.restart-btn {
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.border-left {
+    border-left: white solid 2px;
+}
+
+.border-right {
+    border-right: white solid 2px;
+}
+
+.border-top {
+    border-top: white solid 2px;
+}
+
+.border-bottom {
+    border-bottom: white solid 2px;
+}
+
+app-cell {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}

@@ -1,0 +1,40 @@
+@import '../../../assets/basic.scss';
+
+form {
+    margin: 20px auto;
+    padding: 20px 20px;
+    background: linear-gradient(45deg, $regular-cell, transparent);
+    backdrop-filter: blur(4px);
+    border-radius: 10px;
+    box-shadow: 0 0 10px #00000054;
+    border: 1px solid #214240;
+
+    @media (min-width:740px) {
+        width: 200px;
+    }
+
+    @media (max-width:740px) {
+        max-width: 230px;
+    }
+}
+
+button {
+    cursor: pointer;
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+input {
+    width: 50px;
+    padding: 2px;
+    border: 1px solid $battleship;
+    border-radius: 10px;
+}
+
+label {
+    margin: 10px 0px;
+}

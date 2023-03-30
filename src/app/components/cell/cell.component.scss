@@ -1,0 +1,33 @@
+@import '../../../assets/basic.scss';
+
+button {
+    height: 100%;
+    width: 100%;
+    border: none;
+    box-sizing: border-box;
+    transition: background-color 1s;
+    border-radius: 0px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.regular-cell {
+    background-color: $regular-cell;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $regular-cell-hover;
+    }
+}
+
+.island {
+    background-color: $island;
+}
+
+.empty-clicked {
+    background-color: $empty-cell;
+}
+
+.battleship-clicked, .game-won {
+    background-color: $battleship;
+}
