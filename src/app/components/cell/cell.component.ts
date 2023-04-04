@@ -49,8 +49,8 @@ export class CellComponent {
   }
 
   cellTitle(): string {
-    if (this.isGameWon) return 'game won'
-    else if (this.isClicked || !this.isGameOn) {
+    // if (this.isGameWon) return 'game won'
+    if (this.isClicked || !this.isGameOn) {
       if (this.isBattleship) return 'battleship'
       else if (this.isIsland) return 'island'
       return 'empty cell'

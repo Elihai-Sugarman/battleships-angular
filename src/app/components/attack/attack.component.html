@@ -1,5 +1,4 @@
-<form (submit)="onAttack()">
-    <h3 tabindex="0">Attack</h3>
+<form aria-label="Attack" (submit)="onAttack()">
     <label for="cellLetter" class="flex">
         <span>Cell Letter:</span>
         <input id="cellLetter" type="text" #attack [(ngModel)]="cellLetter" oninput="this.value = this.value.replace(/[^a-zA-z]/g, '')" name="cellLetter" autocomplete="off">

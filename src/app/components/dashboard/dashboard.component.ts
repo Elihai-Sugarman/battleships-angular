@@ -31,7 +31,7 @@ export class DashboardComponent {
   }
 
   battleshipLabel(num: number): string {
-    return this.battleshipsWithLength(num) + 'battleships with' + num + 'cells'
+    return this.battleshipsWithLength(num) + ' battleships with ' + num + ' cells'
   }
 
 }

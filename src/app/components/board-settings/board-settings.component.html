@@ -1,11 +1,11 @@
 <div class="background">
     <div class="board-settings">
-        <form (submit)="onSubmitForm()">
+        <form aria-label="board settings" (submit)="onSubmitForm()">
+            <h3>Board Settings</h3>
             <section>
-                <h3 #focus tabindex="0">Board Settings</h3>
                 <label for="square">
-                    <input type="radio" id="square" name="boardType" value="square" [checked]="boardType === 'square'"
-                        (change)="onChangeType('square')">
+                    <input #focus type="radio" id="square" name="boardType" value="square"
+                        [checked]="boardType === 'square'" (change)="onChangeType('square')">
                     <span>Square</span>
                 </label>
                 <label for="rhombus">
@@ -20,14 +20,16 @@
                     <label for="boardLength" class="flex">
                         <span>Board Length:</span>
                         <input id="boardLength" type="number" [(ngModel)]="boardLength" name="boardLength"
-                            class="input-border" (change)="onSubmit()" [min]="boardType==='rhombus'? 3 : 2">
+                            class="input-border" (change)="onSubmit()" [min]="boardType==='rhombus'? 3 : 2"
+                            (input)="handleInput($event)" autocomplete="off">
                     </label>
                 </div>
                 <div>
                     <label for="boardWidth" class="flex">
                         <span>Board Width:</span>
                         <input id="boardWidth" type="number" [(ngModel)]="boardWidth" name="boardWidth"
-                            class="input-border" (change)="onSubmit()" [min]="boardType==='rhombus'? 3 : 2">
+                            class="input-border" (change)="onSubmit()" [min]="boardType==='rhombus'? 3 : 2"
+                            (input)="handleInput($event)" autocomplete="off">
                     </label>
                 </div>
                 <div>
@@ -35,7 +37,8 @@
                         <span>Battlships Number:</span>
                         <input id="battleshipNum" type="number" [(ngModel)]="battleshipNum" name="battleshipNum" min="1"
                             class="input-border" (change)="onSubmit()"
-                            [max]="boardType==='rhombus'? boardLength*boardWidth/2 : boardLength*boardWidth/4">
+                            [max]="boardType === 'rhombus'? boardLength*boardWidth/2 : boardLength*boardWidth/4"
+                            (input)="handleBattleshipsNum($event)" autocomplete="off">
                     </label>
                 </div>
             </section>
@@ -45,8 +48,15 @@
                     <input type="checkbox" id="create-islands" (change)="onCheckIslands()" [checked]="createIslands">
                 </label>
             </section>
-            <section tabindex="0" class="error-msg" *ngIf="createIslands && boardLength * boardWidth < 10">
-                <p>Can't set islands on a board with this size...</p>
+            <section role="alert" class="error-msg">
+                <p
+                    *ngIf="((boardLength < 3 || boardWidth < 3) && boardType === 'rhombus') || ((boardLength < 2 || boardWidth < 2) && boardType === 'square')">
+                    Board Length or Board Width is too small</p>
+                <p
+                    *ngIf="battleshipNum > boardLength * boardWidth / battleshipNumBorder">
+                    Too many battleships!</p>
+                <p *ngIf="createIslands && boardLength * boardWidth < 10">Can't set islands on a board with this size...
+                </p>
             </section>
             <button (keydown.tab)="handleLastTab($event)">Start Game</button>
         </form>

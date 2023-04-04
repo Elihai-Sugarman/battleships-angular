@@ -1,5 +1,5 @@
 <section class="battleships-dashboard">
-    <h3 tabindex="0" *ngIf="battleships.length && unExposedBattleships().length === 0">
+    <h3 *ngIf="battleships.length && unExposedBattleships().length === 0">
         No battleships left!
     </h3>
     <div *ngIf="unExposedBattleships().length">
@@ -8,13 +8,13 @@
         </h3>
         <ul>
             <li *ngFor="let num of [1,2,3,4]">
-                <div *ngIf="battleshipsWithLength(num)">
-                    <table>
+                <div *ngIf="battleshipsWithLength(num)" [attr.aria-label]="battleshipLabel(num)">
+                    <table aria-hidden="true">
                         <tr>
                             <td *ngFor="let cell of createArray(num); let i = index" [ngClass]="{'border-left': i === 0,'border-right': i === num - 1,'border-top': true,'border-bottom': true}"></td>
                         </tr>
                     </table>
-                    <span tabindex="0" [attr.aria-label]="battleshipLabel(num)">{{ battleshipsWithLength(num) }}</span>
+                    <p>{{ battleshipsWithLength(num) }}</p>
                 </div>
             </li>
         </ul>

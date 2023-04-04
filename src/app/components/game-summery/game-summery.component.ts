@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AttackService } from 'src/app/services/attack.service';
 import { SettingsService } from 'src/app/services/settings.service';
 
@@ -15,6 +15,7 @@ export class GameSummeryComponent {
   battleshipNum: number = 10
   createIslands: boolean = false
   show: boolean = true
+  elementsToRead: any[] = []
 
   constructor(private attackService: AttackService, private settingService: SettingsService) {
     settingService.boardSettings$.subscribe(({ boardLength, boardWidth, battleshipNum, createIslands }) => {

@@ -16,6 +16,7 @@ export class BoardSettingsComponent implements AfterViewInit {
   battleshipNumBorder: number = this.boardType === 'square' ? 2 : 4
   show: boolean = true
   @ViewChild('focus') focusStart: ElementRef = {} as ElementRef
+  error: boolean = false
 
   constructor(private settingService: SettingsService) {
     settingService.show$.subscribe(value => this.show = value)
@@ -57,11 +58,26 @@ export class BoardSettingsComponent implements AfterViewInit {
   }
 
   onSubmitForm(): void {
-    this.settingService.show$.next(false)
+    if (!this.error) this.settingService.show$.next(false)
+    else this.error = false
   }
 
   handleLastTab(event: Event): void {
     event.preventDefault()
     this.focusStart.nativeElement.focus()
+  }
+
+  handleInput(event: any) {
+    let value = event.srcElement.value
+    if ((value < 2 && this.boardType === 'square') || (value < 3 && this.boardType === 'rhombus')) {
+      this.error = true
+    } else this.error = false
+  }
+
+  handleBattleshipsNum(event: any) {
+    let value = event.srcElement.value
+    if (value > this.boardLength * this.boardWidth / this.battleshipNumBorder) {
+      this.error = true
+    } else this.error = false
   }
 }

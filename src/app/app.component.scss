@@ -25,6 +25,10 @@
 
 .add-margin {
     margin-top: 37px;
+
+    @media (max-width: 500px) {
+        margin-top: 74px;
+    }
 }
 
 .flex-row {
