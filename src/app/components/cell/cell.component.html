@@ -1,9 +1,9 @@
 <button *ngIf="isActive" [ngClass]="{'empty-clicked': !isBattleship && !isIsland && (isClicked || !isGameOn),
     'island': isIsland && (isClicked || !isGameOn), 'regular-cell': !isGameWon && !isClicked && isGameOn,
     'battleship-clicked': isBattleship && (isClicked || !isGameOn), 'game-won': isGameWon}" (click)="onClick()"
-    [attr.aria-live]="cellTitle() !== 'unexposed cell' && !isGameWon ? 'assertive' : 'off'" aria-atomic="true"
-    aria-relevant="additions">
-    <span class="nvda-only">
+    [attr.aria-live]="isAriaLive ? 'assertive' : 'off'" aria-atomic="true" aria-relevant="additions"
+    [attr.aria-label]="isAriaLive ? null : cellLabel()">
+    <span *ngIf="isAriaLive" class="nvda-only">
         {{ cellLabel() }}
     </span>
     <div *ngIf="isBattleship && !isGameOn">

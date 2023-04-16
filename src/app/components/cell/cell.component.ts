@@ -21,10 +21,15 @@ export class CellComponent {
   @Output() onCellClick: EventEmitter<boolean> = new EventEmitter()
   isClicked: boolean = false
   isGameOn: boolean = false
+  isAriaLive: boolean = false
 
   constructor(private attackService: AttackService, private settingsService: SettingsService, private toStringPipe: ToStringPipe) {
     attackService.coords$.subscribe(({ row, col }) => {
-      if (row === this.i && col === this.j) this.onClick()
+      if (row === this.i && col === this.j) {
+        this.isAriaLive = true
+        this.onClick()
+        setTimeout(() => this.isAriaLive = false, 100)
+      }
     })
     settingsService.isGameOn$.subscribe(value => this.isGameOn = value)
     settingsService.board$.subscribe(board => setTimeout(() => {
@@ -49,7 +54,6 @@ export class CellComponent {
   }
 
   cellTitle(): string {
-    // if (this.isGameWon) return 'game won'
     if (this.isClicked || !this.isGameOn) {
       if (this.isBattleship) return 'battleship'
       else if (this.isIsland) return 'island'
