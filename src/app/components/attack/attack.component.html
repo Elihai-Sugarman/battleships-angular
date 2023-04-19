@@ -1,11 +1,26 @@
 <form aria-label="Attack" (submit)="onAttack()">
     <label for="cellLetter" class="flex">
         <span>Cell Letter:</span>
-        <input id="cellLetter" type="text" #attack [(ngModel)]="cellLetter" oninput="this.value = this.value.replace(/[^a-zA-z]/g, '')" name="cellLetter" autocomplete="off">
+        <input
+            id="cellLetter"
+            type="text"
+            #attack
+            [(ngModel)]="cellLetter"
+            oninput="this.value = this.value.replace(/[^a-zA-z]/g, '')"
+            name="cellLetter"
+            autocomplete="off"
+        />
     </label>
     <label for="cellNumber" class="flex">
         <span>Cell Number:</span>
-        <input id="cellNumber" type="text" [(ngModel)]="cellNumber" oninput="this.value = this.value.replace(/[^0-9]/g, '')" name="cellNumber" autocomplete="off">
+        <input
+            id="cellNumber"
+            type="text"
+            [(ngModel)]="cellNumber"
+            oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+            name="cellNumber"
+            autocomplete="off"
+        />
     </label>
     <button>Attack</button>
 </form>

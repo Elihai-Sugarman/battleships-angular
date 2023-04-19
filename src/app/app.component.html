@@ -1,16 +1,15 @@
-<div class="background"></div>
 <app-board-settings *ngIf="show"></app-board-settings>
-<div class="content" [ngClass]="{'add-margin': !time || isGameWon}">
+<div class="content" [ngClass]="{ 'add-padding': !time || isGameWon }">
     <app-timer></app-timer>
     <div class="flex-row">
-        <div class="flex-col" *ngIf="width > 1160">
+        <div class="flex-col desktop-only">
             <app-attack></app-attack>
             <app-dashboard></app-dashboard>
         </div>
         <div class="board">
             <app-board></app-board>
         </div>
-        <div class="flex-col" *ngIf="width <= 1160">
+        <div class="flex-col mobile-only">
             <app-attack></app-attack>
             <app-dashboard></app-dashboard>
         </div>

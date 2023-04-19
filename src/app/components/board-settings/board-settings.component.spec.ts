@@ -3,21 +3,20 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { BoardSettingsComponent } from './board-settings.component';
 
 describe('BoardSettingsComponent', () => {
-  let component: BoardSettingsComponent;
-  let fixture: ComponentFixture<BoardSettingsComponent>;
+    let component: BoardSettingsComponent;
+    let fixture: ComponentFixture<BoardSettingsComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ BoardSettingsComponent ]
-    })
-    .compileComponents();
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            declarations: [BoardSettingsComponent],
+        }).compileComponents();
 
-    fixture = TestBed.createComponent(BoardSettingsComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+        fixture = TestBed.createComponent(BoardSettingsComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });

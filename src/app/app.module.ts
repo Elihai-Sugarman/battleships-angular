@@ -14,23 +14,19 @@ import { GameSummeryComponent } from './components/game-summery/game-summery.com
 import { TimerComponent } from './components/timer/timer.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    CellComponent,
-    BoardComponent,
-    ToStringPipe,
-    BoardSettingsComponent,
-    DashboardComponent,
-    AttackComponent,
-    GameSummeryComponent,
-    TimerComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule
-  ],
-  providers: [ToStringPipe],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        CellComponent,
+        BoardComponent,
+        ToStringPipe,
+        BoardSettingsComponent,
+        DashboardComponent,
+        AttackComponent,
+        GameSummeryComponent,
+        TimerComponent,
+    ],
+    imports: [BrowserModule, AppRoutingModule, FormsModule],
+    providers: [ToStringPipe],
+    bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

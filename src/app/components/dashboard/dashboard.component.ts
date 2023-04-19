@@ -1,37 +1,60 @@
-import { Component } from '@angular/core';
-import { Battleship } from 'src/app/Battleship';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { IBattleship } from 'src/app/components/board/battleship.interface';
 import { BattleshipsService } from 'src/app/services/battleships.service';
-import { map } from 'rxjs/operators'
+import { map, takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+    selector: 'app-dashboard',
+    templateUrl: './dashboard.component.html',
+    styleUrls: ['./dashboard.component.scss'],
 })
-export class DashboardComponent {
-  battleships: Battleship[] = []
+export class DashboardComponent implements OnInit, OnDestroy {
+    battleships: IBattleship[] = [];
+    unsubscribe$ = new Subject<void>();
 
-  constructor(private battleshipsService: BattleshipsService) {
-    // battleshipsService.battleships$.subscribe(value => this.battleships = value)
-    battleshipsService.battleships$.asObservable()
-      .pipe(map(value => value.sort((a, b) => a.cells.length - b.cells.length)))
-      .subscribe(value => this.battleships = value)
-  }
+    constructor(private battleshipsService: BattleshipsService) {}
 
-  unExposedBattleships(): Battleship[] {
-    return this.battleships.filter(battleship => battleship.cells.length !== battleship.exposedCellsCount)
-  }
+    ngOnInit(): void {
+        this.battleshipsService.battleships$
+            .asObservable()
+            .pipe(
+                takeUntil(this.unsubscribe$),
+                map((value) =>
+                    value.sort((a, b) => a.cells.length - b.cells.length)
+                )
+            )
+            .subscribe((value) => (this.battleships = value));
+    }
 
-  battleshipsWithLength(length: number): number {
-    return this.unExposedBattleships().filter(battleship => battleship.cells.length === length).length
-  }
+    ngOnDestroy(): void {
+        this.unsubscribe$.next();
+        this.unsubscribe$.complete();
+    }
 
-  createArray(length: number): number[] {
-    return Array(length).fill(length)
-  }
+    unExposedBattleships(): IBattleship[] {
+        return this.battleships.filter(
+            (battleship) =>
+                battleship.cells.length !== battleship.exposedCellsCount
+        );
+    }
 
-  battleshipLabel(num: number): string {
-    return this.battleshipsWithLength(num) + ' battleships with ' + num + ' cells'
-  }
+    battleshipsWithLength(length: number): number {
+        return this.unExposedBattleships().filter(
+            (battleship) => battleship.cells.length === length
+        ).length;
+    }
 
+    createArray(length: number): number[] {
+        return Array(length).fill(length);
+    }
+
+    battleshipLabel(num: number): string {
+        return (
+            this.battleshipsWithLength(num) +
+            ' battleships with ' +
+            num +
+            ' cells'
+        );
+    }
 }

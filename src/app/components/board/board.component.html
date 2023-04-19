@@ -9,13 +9,26 @@
         </tr>
         <tr *ngFor="let line of board; let i = index">
             <td>
-                {{ i+1 }}
+                {{ i + 1 }}
             </td>
-            <td *ngFor="let cell of line; let j = index"
-                [ngClass]="{'border-left': cell.leftBorder && !isGameOn,'border-right': cell.rightBorder && !isGameOn,'border-top': cell.topBorder && !isGameOn,'border-bottom': cell.bottomBorder && !isGameOn}">
-            <!-- <td *ngFor="let cell of line; let j = index"> -->
-                <app-cell [isGameWon]="isGameWon" (onCellClick)="onCellClick(i,j)" [i]="i" [j]="j"
-                    [length]="cell.battleshipLength" [place]="cell.place" [direction]="cell.direction"></app-cell>
+            <td
+                *ngFor="let cell of line; let j = index"
+                [ngClass]="{
+                    'border-left': cell.leftBorder && !isGameOn,
+                    'border-right': cell.rightBorder && !isGameOn,
+                    'border-top': cell.topBorder && !isGameOn,
+                    'border-bottom': cell.bottomBorder && !isGameOn
+                }"
+            >
+                <app-cell
+                    [isGameWon]="isGameWon"
+                    (onCellClick)="onCellClick(i, j)"
+                    [i]="i"
+                    [j]="j"
+                    [length]="cell.battleshipLength"
+                    [place]="cell.place"
+                    [direction]="cell.direction"
+                ></app-cell>
             </td>
         </tr>
     </table>

@@ -1,3 +1,6 @@
+body {
+    background-image: url(assets/BattleshipNew.png);
+}
 
 /* width */
 ::-webkit-scrollbar {
@@ -21,7 +24,8 @@
     box-sizing: border-box;
     text-align: center;
     color: #2f383b;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+        sans-serif;
 }
 
 html {
@@ -31,7 +35,6 @@ html {
 input {
     background-color: #c8cbbc;
     color: #214240;
-
 }
 
 button {
@@ -60,7 +63,7 @@ ul {
     padding: 0;
     margin: -1px;
     overflow: hidden;
-    clip: rect(0,0,0,0);
+    clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border: 0;
 }

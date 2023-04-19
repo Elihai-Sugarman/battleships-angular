@@ -1,4 +1,4 @@
-@import '../../../assets/basic.scss';
+@import "../../../assets/basic.scss";
 
 * {
     text-align: center;
@@ -35,4 +35,8 @@ button {
 
 li {
     margin: 10px 0px;
+}
+
+.block {
+    display: block;
 }

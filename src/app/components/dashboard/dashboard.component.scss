@@ -1,4 +1,4 @@
-@import '../../../assets/basic.scss';
+@import "../../../assets/basic.scss";
 
 .battleships-dashboard {
     text-align: center;
@@ -35,7 +35,7 @@ li div {
     justify-content: center;
 
     span {
-    padding: 6px 3px;
+        padding: 6px 3px;
     }
 }
 
@@ -44,7 +44,6 @@ table {
 }
 
 td {
-    // background-color: cadetblue;
     background-color: $battleship;
     height: 25px;
     min-width: 25px;

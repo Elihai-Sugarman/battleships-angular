@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs'
-import { Battleship } from '../Battleship';
+import { BehaviorSubject } from 'rxjs';
+import { IBattleship } from '../components/board/battleship.interface';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
 export class BattleshipsService {
-  battleships$ = new BehaviorSubject<Battleship[]>([])
+    battleships$ = new BehaviorSubject<IBattleship[]>([]);
 
-  constructor() { }
+    constructor() {}
 
-  setBattleships(battleships: Battleship[]): void {
-    this.battleships$.next(battleships)
-  }
+    setBattleships(battleships: IBattleship[]): void {
+        this.battleships$.next(battleships);
+    }
 }

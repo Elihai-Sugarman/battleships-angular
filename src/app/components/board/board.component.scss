@@ -16,7 +16,7 @@
         margin-inline-end: 25px;
     }
 
-    @media (min-width: 1160px) {
+    @media (min-width: 1161px) {
         max-width: 40vw;
     }
 }
@@ -24,7 +24,6 @@
 table {
     margin-inline: auto;
     max-width: max-content;
-
 }
 
 td {
@@ -35,13 +34,8 @@ td {
     text-align: center;
 
     @media (max-width: 600px) {
-        height: 30px;
-        min-width: 30px;
-    }
-
-    @media (max-width: 500px) {
-        height: 25px;
-        min-width: 25px;
+        height: 40px;
+        min-width: 40px;
     }
 }
 

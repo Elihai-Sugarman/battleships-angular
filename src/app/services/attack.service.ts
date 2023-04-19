@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Subject } from 'rxjs'
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
 export class AttackService {
-  coords$ = new BehaviorSubject<any>({})
-  steps$ = new Subject
+    coords$ = new BehaviorSubject<any>({});
+    steps$ = new Subject();
 
-  constructor() { }
+    constructor() {}
 
-  onAttack(row: number, col: number): void {
-    this.coords$.next({ row, col })
-  }
+    onAttack(row: number, col: number): void {
+        this.coords$.next({ row, col });
+    }
 
-  setSteps(value: boolean): void {
-    this.steps$.next(value)
-  }
+    setSteps(value: boolean): void {
+        this.steps$.next(value);
+    }
 }
